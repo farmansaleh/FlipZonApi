@@ -10,6 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.flipzon.entity.User;
 
+/**
+ * @author Farman Saleh
+ * @since 13/01/2024
+ *
+ */
+
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,12 +26,12 @@ public class UserDetailsImpl implements UserDetails {
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	public UserDetailsImpl(long id, String mobileNo, String emailId, String password,
-		      Collection<? extends GrantedAuthority> authorities) {
-		    this.id = id;
-		    this.mobileNo = mobileNo;
-		    this.emailId = emailId;
-		    this.password = password;
-		    this.authorities = authorities;
+		Collection<? extends GrantedAuthority> authorities) {
+	    this.id = id;
+	    this.mobileNo = mobileNo;
+	    this.emailId = emailId;
+	    this.password = password;
+	    this.authorities = authorities;
 	}
 	
 	public static UserDetailsImpl build(User user) {

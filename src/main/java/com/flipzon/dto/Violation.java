@@ -3,11 +3,11 @@ package com.flipzon.dto;
 public class Violation {
 	
 	private String field;
-	private String issue;
+	private String message;
 	
-	public Violation(String field, String issue) {
+	public Violation(String field, String message) {
 		this.field = field;
-		this.issue = issue;
+		this.message = message;
 	}
 
 	public String getField() {
@@ -18,12 +18,12 @@ public class Violation {
 		this.field = field;
 	}
 
-	public String getIssue() {
-		return issue;
+	public String getmessage() {
+		return message;
 	}
 
-	public void setIssue(String issue) {
-		this.issue = issue;
+	public void setmessage(String message) {
+		this.message = message;
 	}
 	
 }

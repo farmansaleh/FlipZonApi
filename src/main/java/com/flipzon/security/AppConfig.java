@@ -10,6 +10,12 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * @author Farman Saleh
+ * @since 13/01/2024
+ *
+ */
+
 @Configuration
 public class AppConfig {
 	
