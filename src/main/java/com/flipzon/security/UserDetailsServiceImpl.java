@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 import com.flipzon.entity.User;
 import com.flipzon.repository.UserRepository;
 
+/**
+ * @author Farman Saleh
+ * @since 13/01/2024
+ *
+ */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired UserRepository userRepo;

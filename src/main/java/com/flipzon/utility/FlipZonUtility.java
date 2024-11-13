@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
  */
 
 @Component
-public class FlipZonUtility {
+public interface FlipZonUtility {
 
 	//return status message
 	public static String getStatusMessage(int status) {

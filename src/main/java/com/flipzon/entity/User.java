@@ -15,12 +15,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 
-/**
- * @author Farman Saleh
- * @since 10/01/2024
- *
- */
-
 @Entity
 @Table
 public class User extends CurrentUserDtl {

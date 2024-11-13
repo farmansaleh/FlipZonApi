@@ -19,6 +19,12 @@ import com.flipzon.service.AuthService;
 
 import jakarta.validation.Valid;
 
+/**
+ * @author Farman Saleh
+ * @since 07/02/2024
+ *
+ */
+
 @RestController
 @RequestMapping("/users")
 public class AuthController {
