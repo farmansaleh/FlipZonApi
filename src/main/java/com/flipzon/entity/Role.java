@@ -4,6 +4,8 @@ package com.flipzon.entity;
 import com.flipzon.dto.CurrentUserDtl;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +18,8 @@ public class Role extends CurrentUserDtl {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@Enumerated(EnumType.STRING)
 	private ERole name;
 	
 	public long getId() {

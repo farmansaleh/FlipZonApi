@@ -1,42 +1,50 @@
 package com.flipzon.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.flipzon.utility.FlipZonUtility;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.persistence.PrePersist;
+import jakarta.validation.constraints.NotNull;
 
 @MappedSuperclass
 public class CurrentUserDtl {
 	
-	@NotEmpty
-	@CreatedBy
-	private String createdBy;
+	@NotNull
+	@Column(name = "created_by", insertable = true, updatable = false)
+	private long createdBy;
 	
-	@NotEmpty
-	//@JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	@CreatedDate
-	private LocalDateTime createdDate;
+	@NotNull
+	@JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	@Column(name = "created_date" ,insertable = true, updatable = false)
+	private Timestamp createdDate;
 	
-	@NotEmpty
+	@NotNull
 	private int status;
 	
+	@PrePersist
+	public void onSubmit() {
+		this.createdBy = FlipZonUtility.getCurrentUserId();
+		this.createdDate = new Timestamp(System.currentTimeMillis());
+		this.status = Constant.ACTIVE;
+	}
 
-
-	public String getCreatedBy() {
+	public long getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(long createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public LocalDateTime getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDateTime createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 

@@ -1,7 +1,7 @@
 package com.flipzon.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,6 @@ public class MasterServiceImpl implements MasterService {
 	
 	@Override
 	public ApiResponse<Role> createRole(Role role) throws Exception {
-		role.setCreatedDate(LocalDateTime.now());
 		return new ApiResponse<Role>(200, "Role saved!", roleRepository.save(role));
 	}
 
@@ -37,7 +36,6 @@ public class MasterServiceImpl implements MasterService {
 	@Override
 	public ApiResponse<Role> updateRole(Role mstRole) throws Exception {
 		Role role = roleRepository.findById(mstRole.getId()).orElseThrow(()->new RuntimeException("Role not found"));
-		role.setCreatedDate(LocalDateTime.now());
 		return new ApiResponse<Role>(200, "Role updated successfully!", roleRepository.save(role));
 	}
 	

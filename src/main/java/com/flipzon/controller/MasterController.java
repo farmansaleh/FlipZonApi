@@ -16,28 +16,22 @@ import com.flipzon.dto.ApiResponse;
 import com.flipzon.entity.Role;
 import com.flipzon.service.MasterService;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 /**
- * @author Aswani Kadapana
+ * @author Farman Saleh
  * @since 07/02/2024
  *
  */
 
 @RestController
 @RequestMapping("/master")
-@PreAuthorize("hasRole('ADMIN') OR hasRole('RETAILER')")
+@PreAuthorize("hasRole('ADMIN')")
 public class MasterController {
 	
 	@Autowired MasterService masterService;
 	
-	//Start :: Aswani - 05-02-2024
-	
 	//Role Master
-	
 	@PostMapping("/createRole")
-	public ApiResponse<Role> createRole(@RequestBody Role role,HttpServletRequest req) throws Exception {
-		role.setCreatedBy(req.getAttribute("userId").toString());
+	public ApiResponse<Role> createRole(@RequestBody Role role) throws Exception {
 		return masterService.createRole(role);
 	}
 	
@@ -52,16 +46,14 @@ public class MasterController {
 	}
 	
 	@PutMapping("/updateRole/{id}")
-	public ApiResponse<Role> updateRole(@PathVariable long id, @RequestBody Role role, HttpServletRequest req) throws Exception {
+	public ApiResponse<Role> updateRole(@PathVariable long id, @RequestBody Role role) throws Exception {
 		role.setId(id);
-		role.setCreatedBy(req.getAttribute("userId").toString());
 		return masterService.updateRole(role);
 	}
 	
 	@PostMapping("/deActiveRole/{id}")
-	public ApiResponse<?> deActiveRole(@PathVariable long id, @RequestBody Role role, HttpServletRequest req) throws Exception {
+	public ApiResponse<?> deActiveRole(@PathVariable long id, @RequestBody Role role) throws Exception {
 		role.setId(id);
-		role.setCreatedBy(req.getAttribute("userId").toString());
 		return masterService.deActiveRole(role);
 	}
 	
@@ -76,7 +68,5 @@ public class MasterController {
 //	public List<MpgUserRole> getAssignedUserRoleById(@PathVariable String roleId) throws Exception {
 //		return masterService.getAssignedUserRoleById(roleId);
 //	}
-	
-	//End :: Aswani
 	
 }
